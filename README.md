@@ -5,7 +5,7 @@ This is supposed to be a simple unity scene you can use to instruct your user to
 
 # How do I use it?
 ## Easy Way
-1.  Download the latest unitypackage from the Releases tab
+1.  Download the latest unitypackage from the Releases tab: https://github.com/rje/RoomMapper/releases
 2.  Open your Magic Leap unity project (You should have already imported the MagicLeap asset package)
 3.  Select Assets > Import Package > Custom Package... and select the unitypackage you just downloaded
 4.  Add RoomMapperScene to your "Scenes in Build" list
