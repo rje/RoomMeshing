@@ -246,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 632900279}
   - component: {fileID: 632900278}
+  - component: {fileID: 632900280}
   m_Layer: 0
   m_Name: Target Manager
   m_TagString: Untagged
@@ -267,10 +268,8 @@ MonoBehaviour:
   TargetPrefab: {fileID: 1971593192827690, guid: c1d54b6c933abf04f965c67f3fd724de,
     type: 2}
   MainLocator: {fileID: 135247699}
-  Radius: 2
-  TargetsPerSlice: 4
-  NumSlices: 3
   MainScene: default
+  SphericalGenerator: {fileID: 632900280}
 --- !u!4 &632900279
 Transform:
   m_ObjectHideFlags: 0
@@ -284,6 +283,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &632900280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 632900277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a62c212a016d16478f6df7a98f3d1b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 2
+  TargetsPerSlice: 4
+  NumSlices: 3
+  TargetPrefab: {fileID: 1971593192827690, guid: c1d54b6c933abf04f965c67f3fd724de,
+    type: 2}
 --- !u!1 &967821097
 GameObject:
   m_ObjectHideFlags: 0
