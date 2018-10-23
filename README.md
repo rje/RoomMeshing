@@ -1,15 +1,15 @@
-# RoomMapper - A simple room mapping scene for Magic Leap One.
+# RoomMeshing - A simple room meshing scene for Magic Leap One.
 
 # What is it?
-This is supposed to be a simple unity scene you can use to instruct your user to map the environment in your magic leap applications and demos. It should be lightweight and simple to integrate.
+This is supposed to be a simple unity scene you can use to instruct your user to mesh the environment in your magic leap applications and demos. It should be lightweight and simple to integrate.
 
 # How do I use it?
 ## Easy Way
-1.  Download the latest unitypackage from the Releases tab: https://github.com/rje/RoomMapper/releases
+1.  Download the latest unitypackage from the Releases tab: https://github.com/rje/RoomMeshing/releases
 2.  Open your Magic Leap unity project (You should have already imported the MagicLeap asset package)
 3.  Select Assets > Import Package > Custom Package... and select the unitypackage you just downloaded
-4.  Add RoomMapperScene to your "Scenes in Build" list
-5.  Open RoomMapperScene and select the 'Target Manager' GameObject. Set the 'Main Scene' variable to the name of the scene you wish to transition to after mapping
+4.  Add RoomMeshingScene to your "Scenes in Build" list
+5.  Open RoomMeshingScene and select the 'Target Manager' GameObject. Set the 'Main Scene' variable to the name of the scene you wish to transition to after meshing 
 
 ## Other Way
 1. Clone this repo
