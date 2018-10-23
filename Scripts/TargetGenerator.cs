@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RoomMapper
+namespace RoomMeshing
 {
     public class TargetGenerator : MonoBehaviour
     {

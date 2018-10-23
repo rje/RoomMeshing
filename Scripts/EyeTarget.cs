@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.MagicLeap;
 
-namespace RoomMapper
+namespace RoomMeshing
 {
     public class EyeTarget : MonoBehaviour
     {

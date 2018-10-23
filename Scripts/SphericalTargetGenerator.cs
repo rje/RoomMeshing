@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RoomMapper
+namespace RoomMeshing
 {
     public class SphericalTargetGenerator : TargetGenerator
     {
