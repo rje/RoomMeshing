@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainLocator: {fileID: 135247699}
   MainScene: default
-  TypeToUse: 0
+  TypeToUse: 1
   SphericalGenerator: {fileID: 632900280}
   ConfidenceBasedGenerator: {fileID: 632900281}
 --- !u!4 &632900279
@@ -314,8 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2a86da7131194e90edd8f17fe450d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConfidenceThreshold: 0.8
-  MaxViews: 2
+  ConfidenceThreshold: 0.25
+  ImprovementThreshold: 0.1
+  MaxViews: 3
   TargetPrefab: {fileID: 1971593192827690, guid: c1d54b6c933abf04f965c67f3fd724de,
     type: 2}
 --- !u!1 &967821097

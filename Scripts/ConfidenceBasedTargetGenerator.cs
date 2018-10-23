@@ -9,8 +9,10 @@ namespace RoomMeshing
 {
     public class ConfidenceBasedTargetGenerator : TargetGenerator
     {
-        public float ConfidenceThreshold = 0.8f;
-        public float MaxViews = 3;
+        public float ConfidenceThreshold = 0.25f;
+        public float ImprovementThreshold = 0.1f;
+        public int MaxViews = 2;
+        public int MinSeen = 10;
         public GameObject TargetPrefab;
 
         private EyeTarget _currentTarget;
@@ -18,6 +20,7 @@ namespace RoomMeshing
         private TrackableId _lastTarget = TrackableId.InvalidId;
         float _lastConfidence = 0;
         Dictionary<TrackableId, int> _seenCount;
+        int _totalSeen = 0;
 
         public override void InitializeGenerator(Locator mainLoc)
         {
@@ -45,12 +48,19 @@ namespace RoomMeshing
                 {
                     continue;
                 }
+
                 var valuesFound = _mapper.TryGetConfidence(id, confidenceValues);
                 if(!valuesFound)
                 {
                     continue;
                 }
                 var confidence = confidenceValues.Average();
+                if(confidence >= ConfidenceThreshold)
+                {
+                    _seenCount[id] = MaxViews;
+                    continue;
+                }
+
                 if (confidence < worstConfidence)
                 {
                     worst = id;
@@ -64,11 +74,15 @@ namespace RoomMeshing
             {
                 var lastGO = _mapper.meshIdToGameObjectMap[_lastTarget];
                 var lastMR = lastGO.GetComponent<MeshRenderer>();
-                lastMR.material.color = Color.blue;
+                lastMR.material.SetColor("_GridColor", Color.blue);
             }
 
             if(worst == TrackableId.InvalidId)
             {
+                if(_totalSeen > MinSeen)
+                {
+                    _isDone = true;
+                }
                 return;
             }
 
@@ -86,10 +100,11 @@ namespace RoomMeshing
             {
                 _seenCount[worst] = 1;
             }
+            _totalSeen++;
 
             var meshGO = _mapper.meshIdToGameObjectMap[worst];
             var mr = meshGO.GetComponent<MeshRenderer>();
-            mr.material.color = Color.red;
+            mr.material.SetColor("_GridColor", Color.red);
             _lastTarget = worst;
             _lastConfidence = worstConfidence;
             var loc = GetCentroid(meshGO);
@@ -122,6 +137,18 @@ namespace RoomMeshing
             {
                 if(_currentTarget != null)
                 {
+                    var values = new List<float>();
+                    var result = _mapper.TryGetConfidence(_lastTarget, values);
+                    if(result)
+                    {
+                        var newConfidence = values.Average();
+                        // if we didn't improve enough, stop tracking this mesh
+                        var diff = newConfidence - _lastConfidence;
+                        if(diff < ImprovementThreshold)
+                        {
+                            _seenCount[_lastTarget] = MaxViews;
+                        }
+                    }
                     Destroy(_currentTarget.gameObject);
                 }
                 FindNextTarget();
