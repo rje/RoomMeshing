@@ -7,6 +7,8 @@ public class Locator : MonoBehaviour
 {
     [Multiline(2)]
     public string UpdateString = "Targets left: {0}\nBumper to skip";
+    [Multiline(2)]
+    public string UpdateStringUnknownCount = "Building mesh!\nBumper to skip";
     public float RotationSpeed = 720;
     public GameObject LocatorArrow;
     public Text LocatorText;
@@ -30,6 +32,13 @@ public class Locator : MonoBehaviour
         var rot = Quaternion.LookRotation(planeNormal, Vector3.Cross(planeNormal, right));
         var currentRot = LocatorArrow.transform.rotation;
         LocatorArrow.transform.rotation = Quaternion.RotateTowards(currentRot, rot, RotationSpeed * Time.deltaTime);
-        LocatorText.text = string.Format(UpdateString, targetsRemaining);
+        if(targetsRemaining == -1)
+        {
+            LocatorText.text = UpdateStringUnknownCount;
+        }
+        else
+        {
+            LocatorText.text = string.Format(UpdateString, targetsRemaining);
+        }
     }
 }
