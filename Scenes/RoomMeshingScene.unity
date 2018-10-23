@@ -158,6 +158,9 @@ MonoBehaviour:
   UpdateString: 'Targets left: {0}
 
     Bumper to skip'
+  UpdateStringUnknownCount: 'Building mesh!
+
+    Bumper to skip'
   RotationSpeed: 720
   LocatorArrow: {fileID: 976050372}
   LocatorText: {fileID: 158616299}
@@ -247,6 +250,7 @@ GameObject:
   - component: {fileID: 632900279}
   - component: {fileID: 632900278}
   - component: {fileID: 632900280}
+  - component: {fileID: 632900281}
   m_Layer: 0
   m_Name: Target Manager
   m_TagString: Untagged
@@ -265,11 +269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fd634cbab137e418cb7338543c5e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetPrefab: {fileID: 1971593192827690, guid: c1d54b6c933abf04f965c67f3fd724de,
-    type: 2}
   MainLocator: {fileID: 135247699}
   MainScene: default
+  TypeToUse: 1
   SphericalGenerator: {fileID: 632900280}
+  ConfidenceBasedGenerator: {fileID: 632900281}
 --- !u!4 &632900279
 Transform:
   m_ObjectHideFlags: 0
@@ -277,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 632900277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.043509185, y: 0, z: 200.01099}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -297,6 +301,21 @@ MonoBehaviour:
   Radius: 2
   TargetsPerSlice: 4
   NumSlices: 3
+  TargetPrefab: {fileID: 1971593192827690, guid: c1d54b6c933abf04f965c67f3fd724de,
+    type: 2}
+--- !u!114 &632900281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 632900277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a2a86da7131194e90edd8f17fe450d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConfidenceThreshold: 0.8
+  MaxViews: 2
   TargetPrefab: {fileID: 1971593192827690, guid: c1d54b6c933abf04f965c67f3fd724de,
     type: 2}
 --- !u!1 &967821097
