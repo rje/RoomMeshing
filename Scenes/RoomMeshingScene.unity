@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainLocator: {fileID: 135247699}
   MainScene: default
-  TypeToUse: 1
+  TypeToUse: 0
   SphericalGenerator: {fileID: 632900280}
   ConfidenceBasedGenerator: {fileID: 632900281}
 --- !u!4 &632900279
